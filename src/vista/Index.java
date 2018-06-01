@@ -34,7 +34,7 @@ public class Index extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnLstSmpl.setText("Lista Simple");
+        btnLstSmpl.setText("Listas");
         btnLstSmpl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLstSmplActionPerformed(evt);
