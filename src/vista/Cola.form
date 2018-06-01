@@ -26,12 +26,12 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblCantNodos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="431" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -63,7 +63,7 @@
           <Font name="Lucida Handwriting" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Vista Pilas"/>
+        <Property name="text" type="java.lang.String" value="Vista Colas"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

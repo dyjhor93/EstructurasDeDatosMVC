@@ -1,9 +1,9 @@
 package vista;
 
-public class Pila extends javax.swing.JFrame {
+public class Cola extends javax.swing.JFrame {
 
-    /** Creates new form Pila */
-    public Pila() {
+    /** Creates new form Cola */
+    public Cola() {
         initComponents();
     }
 
@@ -25,7 +25,7 @@ public class Pila extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Handwriting", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Vista Pilas");
+        jLabel2.setText("Vista Colas");
 
         jTableLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,7 +61,7 @@ public class Pila extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCantNodos)
-                        .addGap(0, 448, Short.MAX_VALUE))
+                        .addGap(0, 431, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -100,20 +100,20 @@ public class Pila extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cola.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cola.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cola.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cola.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pila().setVisible(true);
+                new Cola().setVisible(true);
             }
         });
     }

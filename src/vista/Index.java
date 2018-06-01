@@ -1,13 +1,7 @@
 package vista;
-import java.awt.Desktop;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +11,8 @@ public class Index extends javax.swing.JFrame {
     //
     
     ListaSimple lst= new ListaSimple();
+    Pila pl=new Pila();
+    Cola cl=new Cola();
     /** Creates new form Index */
     public Index() {
         initComponents();
@@ -57,6 +53,11 @@ public class Index extends javax.swing.JFrame {
         jLabel1.setText("Estructuras de Datos MVC");
 
         btnColas.setText("Colas");
+        btnColas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColasActionPerformed(evt);
+            }
+        });
 
         btnDoc.setText("Documentacion");
         btnDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +122,16 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDocActionPerformed
 
     private void btnPilasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilasActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        pl.setVisible(true);
+        pl.addWindowListener(new Index.EscucharJFrame());
     }//GEN-LAST:event_btnPilasActionPerformed
+
+    private void btnColasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColasActionPerformed
+        this.setVisible(false);
+        cl.setVisible(true);
+        cl.addWindowListener(new Index.EscucharJFrame());
+    }//GEN-LAST:event_btnColasActionPerformed
 
     /**
      * @param args the command line arguments
