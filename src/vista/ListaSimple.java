@@ -42,7 +42,7 @@ public class ListaSimple extends javax.swing.JFrame {
         lblCantNodos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnAgregarNodo.setText("Agregar Nodo");
         btnAgregarNodo.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +177,7 @@ public class ListaSimple extends javax.swing.JFrame {
         vaciar();//vaciamos los cajones de texto
         AgregarNodo.setLst(lst);//enviamos la lista a la nueva ventana
         AgregarNodo.setVisible(true);//hacemos la ventana visible
-        AgregarNodo.addWindowListener(new EscucharJFrameAgregar());//esperamos que se genere el evento dispose para actualizar la tabla
+        AgregarNodo.addWindowListener(new EscucharJFrame());//esperamos que se genere el evento dispose para actualizar la tabla
         
     }//GEN-LAST:event_btnAgregarNodoActionPerformed
 
@@ -256,7 +256,7 @@ public class ListaSimple extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
 //implentado para escuchar acciones de las ventanas (abrir, cerrar, maximizar, etc...)
-        class EscucharJFrameAgregar implements WindowListener{
+        class EscucharJFrame implements WindowListener{
         @Override
         public void windowClosed(WindowEvent e) {
             //este codigo se ejecuda al cerrar o desactivar una ventana

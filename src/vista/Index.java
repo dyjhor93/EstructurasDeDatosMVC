@@ -1,5 +1,7 @@
 package vista;
 import java.awt.Desktop;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,6 +46,11 @@ public class Index extends javax.swing.JFrame {
         });
 
         btnPilas.setText("Pilas");
+        btnPilas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPilasActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Handwriting", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,10 +99,14 @@ public class Index extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void mostrarMenu(){
+        this.setVisible(true);
+    }
     private void btnLstSmplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLstSmplActionPerformed
         this.setVisible(false);
         lst.setVisible(true);
+        lst.addWindowListener(new Index.EscucharJFrame());
+        
     }//GEN-LAST:event_btnLstSmplActionPerformed
 
     private void btnDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocActionPerformed
@@ -108,6 +119,10 @@ public class Index extends javax.swing.JFrame {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnDocActionPerformed
+
+    private void btnPilasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPilasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,4 +165,42 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
+    //implentado para escuchar acciones de las ventanas (abrir, cerrar, maximizar, etc...)
+        class EscucharJFrame implements WindowListener{
+        @Override
+        public void windowClosed(WindowEvent e) {
+            //este codigo se ejecuda al cerrar o desactivar una ventana
+            mostrarMenu();
+        }
+
+        @Override
+        public void windowOpened(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowClosing(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowIconified(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowActivated(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent we) {
+            
+        }
+    }
 }

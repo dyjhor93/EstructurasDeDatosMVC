@@ -7,6 +7,9 @@
 package principal;
 //import javax.swing.*;
 //import javax.swing.UIManager.*;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import vista.Index;
 //import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 
@@ -15,19 +18,9 @@ import vista.Index;
  * @author dyjho
  */
 public class Inicio {
-
     public static void main(String[] args) {
-        //synt theme
-        /*
-        try {
-            UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
         Index prin = new Index();
         prin.setVisible(true);
-        
     }
     
 }
