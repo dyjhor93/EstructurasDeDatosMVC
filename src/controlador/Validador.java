@@ -26,11 +26,11 @@ public class Validador {
     }
     
     //implementado para actualizar la tabla de una lista simple
-    public void actualizarTabla(ListaSimple lst, javax.swing.JTable jTableLista, javax.swing.JLabel lblCantNodos) {
-        NodoSimple tmp = lst.getInicio();
+    public void actualizarTabla(NodoSimple tmp, int tam, javax.swing.JTable jTableLista, javax.swing.JLabel lblCantNodos) {
+        //NodoSimple tmp = lst.getInicio();
         //Modelo de la tabla que mostrara los datos
         String columnas[] = new String[]{"Nombre", "Apellido", "Documento", "Telefono", "Edad"};
-        Object filas[][] = new Object[lst.tam][5];
+        Object filas[][] = new Object[tam][5];
         for (int i = 0; tmp != null; i++) {
             Persona prs = tmp.getPerson();
             filas[i][0] = prs.getNombres();
@@ -41,10 +41,10 @@ public class Validador {
             tmp = tmp.getSiguiente();
         }
         DefaultTableModel tablaModel = new DefaultTableModel(filas, columnas);
-        lblCantNodos.setText(String.valueOf(lst.tam));
+        lblCantNodos.setText(String.valueOf(tam));
         jTableLista.setModel(tablaModel);
     }
-
+    
     //validar los cajones de datos numericos al precionar cualquier tecla
     public void validarEventKeyTyped(java.awt.event.KeyEvent evt){
         int k=(int)evt.getKeyChar();

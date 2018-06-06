@@ -1,7 +1,14 @@
 package vista;
 
-public class Pila extends javax.swing.JFrame {
+import controlador.Validador;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JOptionPane;
 
+public class Pila extends javax.swing.JFrame {
+    Validador validar = new Validador();//validador
+    Agregar AgregarNodo=new Agregar();//ventana de agregar nodo 
+    controlador.Pila pl = new controlador.Pila();
     /** Creates new form Pila */
     public Pila() {
         initComponents();
@@ -20,6 +27,8 @@ public class Pila extends javax.swing.JFrame {
         jTableLista = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         lblCantNodos = new javax.swing.JLabel();
+        btnApilar = new javax.swing.JButton();
+        btnDesapilar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,6 +58,20 @@ public class Pila extends javax.swing.JFrame {
 
         lblCantNodos.setText("0");
 
+        btnApilar.setText("Apilar");
+        btnApilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApilarActionPerformed(evt);
+            }
+        });
+
+        btnDesapilar.setText("Desapilar");
+        btnDesapilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesapilarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,13 +79,19 @@ public class Pila extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCantNodos)
-                        .addGap(0, 448, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCantNodos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnApilar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDesapilar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -76,12 +105,28 @@ public class Pila extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblCantNodos))
-                .addGap(184, 184, 184))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnApilar)
+                    .addComponent(btnDesapilar))
+                .addGap(146, 146, 146))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApilarActionPerformed
+        AgregarNodo.vaciar();//vaciamos los cajones de texto
+        AgregarNodo.setVisible(true);//hacemos la ventana visible
+        AgregarNodo.addWindowListener(new Pila.EscucharJFrame());//esperamos que se genere el evento dispose para actualizar la tabla
+    }//GEN-LAST:event_btnApilarActionPerformed
+
+    private void btnDesapilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesapilarActionPerformed
+        pl.desapilar();
+        validar.actualizarTabla(pl.getInicio(),pl.tam,jTableLista,lblCantNodos);
+        JOptionPane.showMessageDialog(null, "Desapilado Correctamente!");
+    }//GEN-LAST:event_btnDesapilarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,6 +164,8 @@ public class Pila extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApilar;
+    private javax.swing.JButton btnDesapilar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -126,4 +173,49 @@ public class Pila extends javax.swing.JFrame {
     private javax.swing.JLabel lblCantNodos;
     // End of variables declaration//GEN-END:variables
 
+    
+//implentado para escuchar acciones de la ventana agregar (abrir, cerrar, maximizar, etc...)
+        class EscucharJFrame implements WindowListener{
+        @Override
+        public void windowClosed(WindowEvent e) {
+            //este codigo se ejecuda al cerrar o desactivar la ventana
+            if(AgregarNodo.getNuevo()!=null){
+                pl.apilar(AgregarNodo.getNuevo());
+                validar.actualizarTabla(pl.getInicio(),pl.tam,jTableLista,lblCantNodos);
+                JOptionPane.showMessageDialog(null, "Agregado Correctamente!");
+            }
+            
+            
+        }
+
+        @Override
+        public void windowOpened(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowClosing(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowIconified(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowActivated(WindowEvent we) {
+            
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent we) {
+            
+        }
+    }
 }

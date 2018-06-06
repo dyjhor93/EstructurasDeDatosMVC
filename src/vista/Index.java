@@ -111,6 +111,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLstSmplActionPerformed
 
     private void btnDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Espere mientras se abre la documentación de la app", "Abriendo documentación", 1);
         String doc = String.valueOf("Documentacion.docx");//nombre del documento a abrir
         try {
             Runtime.getRuntime().exec("cmd /c start " + doc);//abrir documento

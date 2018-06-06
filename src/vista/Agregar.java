@@ -7,23 +7,29 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import javax.swing.JOptionPane;
 import modelo.*;
-public class ListaSimpleAgregar extends javax.swing.JFrame {
+public class Agregar extends javax.swing.JFrame {
 
     
-    /*      Referencia de la lista en ListaSimple      */
-    ListasControlador lst = new ListasControlador();
+    /*      Nuevo nodo      */
+    NodoSimple nuevo=null;
     Validador validar=new Validador();
-    public ListasControlador getLst() {
-        return lst;
+
+    public NodoSimple getNuevo() {
+        return nuevo;
     }
-    public void setLst(ListasControlador lst) {
-        this.lst = lst;
+    //vaciar  los cajonesde texto
+    public void vaciar(){
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDoc.setText("");
+        txtEdad.setText("");
+        txtTel.setText("");
     }
 
     
     
     /** Creates new form ListaSimple */
-    public ListaSimpleAgregar() {
+    public Agregar() {
         initComponents();
         
     }
@@ -150,13 +156,12 @@ public class ListaSimpleAgregar extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         if(txtNombres.getText().equals("")||txtApellidos.getText().equals("")||txtTel.getText().equals("")||txtDoc.getText().equals("")||txtEdad.getText().equals("")){
-            
+            JOptionPane.showMessageDialog(null, "LLene todos los campos!");
         }else{
             Persona pers = new Persona(txtNombres.getText(),txtApellidos.getText(),parseInt(txtEdad.getText()),parseLong(txtDoc.getText()),parseLong(txtTel.getText()));
-            NodoSimple nuevo = new NodoSimple(pers ,null);
-            lst.agregarNodo(nuevo);
+            nuevo = new NodoSimple(pers ,null);
             this.dispose();
-            JOptionPane.showMessageDialog(null, "Agregado correctamente!");
+            
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
     
@@ -189,14 +194,18 @@ public class ListaSimpleAgregar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaSimpleAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaSimpleAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaSimpleAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaSimpleAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -204,7 +213,7 @@ public class ListaSimpleAgregar extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ListaSimpleAgregar().setVisible(true);
+            new Agregar().setVisible(true);
         });
     }
 
@@ -216,11 +225,11 @@ public class ListaSimpleAgregar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    protected javax.swing.JTextField txtApellidos;
-    protected javax.swing.JTextField txtDoc;
-    protected javax.swing.JTextField txtEdad;
-    protected javax.swing.JTextField txtNombres;
-    protected javax.swing.JTextField txtTel;
+    public javax.swing.JTextField txtApellidos;
+    public javax.swing.JTextField txtDoc;
+    public javax.swing.JTextField txtEdad;
+    public javax.swing.JTextField txtNombres;
+    public javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 
 }

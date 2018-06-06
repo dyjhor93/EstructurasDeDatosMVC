@@ -7,16 +7,10 @@ public class ListaSimple extends javax.swing.JFrame {
 
     //
     Validador validar = new Validador();
+    Agregar AgregarNodo=new Agregar();//ventana de agregar nodo a la lista
     ListasControlador lst = new ListasControlador();//lista controlador
-    ListaSimpleAgregar AgregarNodo=new ListaSimpleAgregar();//ventana de agregar nodo a la lista
     //borra los valores de los cajones de texto
-    private void vaciar(){
-        AgregarNodo.txtNombres.setText("");
-        AgregarNodo.txtApellidos.setText("");
-        AgregarNodo.txtDoc.setText("");
-        AgregarNodo.txtEdad.setText("");
-        AgregarNodo.txtTel.setText("");
-    }
+    
     /** Creates new form ListaSimple */
     public ListaSimple() {
         initComponents();
@@ -174,11 +168,9 @@ public class ListaSimple extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarNodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNodoActionPerformed
-        vaciar();//vaciamos los cajones de texto
-        AgregarNodo.setLst(lst);//enviamos la lista a la nueva ventana
+        AgregarNodo.vaciar();//vaciamos los cajones de texto
         AgregarNodo.setVisible(true);//hacemos la ventana visible
         AgregarNodo.addWindowListener(new EscucharJFrame());//esperamos que se genere el evento dispose para actualizar la tabla
-        
     }//GEN-LAST:event_btnAgregarNodoActionPerformed
 
     
@@ -190,7 +182,7 @@ public class ListaSimple extends javax.swing.JFrame {
     private void btnDelParImparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelParImparActionPerformed
         int parOimpar = validar.pedirNumero("Dado un numero borrar los nodos con documento pares si el numero es par\nen caso contrario borrar los impares.\nIngrese el numero: ");
         lst.delParImpar(parOimpar);
-        validar.actualizarTabla(lst,jTableLista,lblCantNodos);
+        validar.actualizarTabla(lst.getInicio(),lst.tam,jTableLista,lblCantNodos);
     }//GEN-LAST:event_btnDelParImparActionPerformed
 
     private void btnEdadPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdadPromedioActionPerformed
@@ -199,12 +191,12 @@ public class ListaSimple extends javax.swing.JFrame {
 
     private void btnBorrarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarListaActionPerformed
         lst.eliminarLista();
-        validar.actualizarTabla(lst,jTableLista,lblCantNodos);
+        validar.actualizarTabla(lst.getInicio(),lst.tam,jTableLista,lblCantNodos);
     }//GEN-LAST:event_btnBorrarListaActionPerformed
 
     private void btnAutollenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutollenarActionPerformed
         lst.autoLlenar(validar.pedirNumero("Ingrese cantidad de nodos"));
-        validar.actualizarTabla(lst,jTableLista,lblCantNodos);
+        validar.actualizarTabla(lst.getInicio(),lst.tam,jTableLista,lblCantNodos);
     }//GEN-LAST:event_btnAutollenarActionPerformed
     
     
@@ -255,12 +247,18 @@ public class ListaSimple extends javax.swing.JFrame {
     private javax.swing.JLabel lblCantNodos;
     // End of variables declaration//GEN-END:variables
     
-//implentado para escuchar acciones de las ventanas (abrir, cerrar, maximizar, etc...)
+//implentado para escuchar acciones de la ventana agregar (abrir, cerrar, maximizar, etc...)
         class EscucharJFrame implements WindowListener{
         @Override
         public void windowClosed(WindowEvent e) {
-            //este codigo se ejecuda al cerrar o desactivar una ventana
-            validar.actualizarTabla(lst,jTableLista,lblCantNodos);
+            //este codigo se ejecuda al cerrar o desactivar la ventana
+            if(AgregarNodo.getNuevo()!=null){
+                lst.agregarNodo(AgregarNodo.getNuevo());
+                validar.actualizarTabla(lst.getInicio(),lst.tam,jTableLista,lblCantNodos);
+                JOptionPane.showMessageDialog(null, "Agregado Correctamente!");
+            }
+            
+            
         }
 
         @Override
